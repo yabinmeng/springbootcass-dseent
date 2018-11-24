@@ -45,7 +45,7 @@ public class BookRatingRepository {
 
     public List<BookRating> findRatingForBook(UUID bookId) {
         PreparedStatement preparedStatement =
-            dseSession.prepare("select * from " + TBL_NAME + " where book_id = ?");
+            dseSession.prepare("select * from " + TBL_NAME + " where book_id = ? ALLOW FILTERING");
 
         BoundStatement boundStatement = preparedStatement.bind(bookId);
 
