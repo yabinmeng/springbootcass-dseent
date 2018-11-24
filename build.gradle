@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.ymeng.springbootcass'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+	// https://mvnrepository.com/artifact/com.datastax.dse/dse-java-driver-core
+	compile group: 'com.datastax.dse', name: 'dse-java-driver-core', version: '1.7.0'
+
+	// https://mvnrepository.com/artifact/com.datastax.dse/dse-java-driver-mapping
+	compile group: 'com.datastax.dse', name: 'dse-java-driver-mapping', version: '1.7.0'
+
+	// https://mvnrepository.com/artifact/com.datastax.dse/dse-java-driver-graph
+	compile group: 'com.datastax.dse', name: 'dse-java-driver-graph', version: '1.7.0'
+
+	// https://mvnrepository.com/artifact/com.codahale.metrics/metrics-core
+	compile group: 'com.codahale.metrics', name: 'metrics-core', version: '3.0.2'
+
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+}
