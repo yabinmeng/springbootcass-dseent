@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootApplication
@@ -41,6 +42,14 @@ public class DseentApplication implements CommandLineRunner {
         bookRatingRepository.saveRating(bookRating1);
         bookRatingRepository.saveRating(bookRating2);
         bookRatingRepository.saveRating(bookRating3, Mapper.Option.saveNullFields(false));
+
+        //UUID bookIdToQuery = UUID.fromString("65e30bfc-42e7-4d9a-91ab-e78a99d00a21");
+        List<BookRating> bookRatings = bookRatingRepository.findRatingForBook(bookId1);
+
+        for (BookRating bookRating : bookRatings) {
+            System.out.println(bookRating.toString());
+        }
+
 
         System.exit(0);
     }
