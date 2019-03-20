@@ -36,9 +36,9 @@ public class DseConfig {
 
     @Bean
     public DseCluster dseCluster(
-        @Value("${cassandra.host}") String host,
         @Value("${cassandra.cluster.name}") String clusterName,
-        @Value("${cassandra.port:9042}") int port ) {
+        @Value("${cassandra.port:9042}") int port,
+        @Value("${cassandra.hosts}") String... host) {
 
         DseCluster.Builder dseClusterBuilder =
             DseCluster.builder()
